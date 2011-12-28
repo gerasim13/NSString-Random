@@ -44,7 +44,7 @@
 
 + (id)randomizedStringWithAlphabet:(NSString *)alphabet length:(NSUInteger)len
 {
-    return [[self alloc] initWithAlphabet:alphabet length:len];
+    return [[[self alloc] initWithAlphabet:alphabet length:len] autorelease];
 }
 
 - (id)initWithDefaultAlphabet
