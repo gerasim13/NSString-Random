@@ -64,7 +64,7 @@
     for (NSUInteger i = 0U; i < len; i++) {
         u_int32_t r = arc4random() % [alphabet length];
         unichar c = [alphabet characterAtIndex:r];
-        [s appendFormat:@"%c", c];
+        [s appendFormat:@"%C", c];
     }
     return [NSString stringWithString:s];
 }
