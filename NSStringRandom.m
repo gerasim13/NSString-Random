@@ -44,7 +44,7 @@
 
 + (id)randomizedStringWithAlphabet:(NSString *)alphabet length:(NSUInteger)len
 {
-    return [[self alloc] initWithAlphabet:alphabet length:len];
+    return [[[self alloc] initWithAlphabet:alphabet length:len] autorelease];
 }
 
 - (id)initWithDefaultAlphabet
@@ -64,7 +64,7 @@
     for (NSUInteger i = 0U; i < len; i++) {
         u_int32_t r = arc4random() % [alphabet length];
         unichar c = [alphabet characterAtIndex:r];
-        [s appendFormat:@"%C", c];
+        [s appendFormat:@"%c", c];
     }
     return [NSString stringWithString:s];
 }
