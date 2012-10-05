@@ -66,7 +66,7 @@
         unichar c = [alphabet characterAtIndex:r];
         [s appendFormat:@"%C", c];
     }
-    return [NSString stringWithString:s];
+    return [[NSString stringWithString:s] retain];
 }
 
 @end
