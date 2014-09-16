@@ -37,14 +37,15 @@
     return [self randomizedStringWithAlphabet:[self defaultAlphabet]];
 }
 
-+ (id)randomizedStringWithAlphabet:(NSString *)alphabet
++ (id)randomizedStringWithAlphabet:(NSString*)alphabet
 {
     return [self randomizedStringWithAlphabet:alphabet length:DEFAULT_LENGTH];
 }
 
-+ (id)randomizedStringWithAlphabet:(NSString *)alphabet length:(NSUInteger)len
++ (id)randomizedStringWithAlphabet:(NSString*)alphabet
+                            length:(NSUInteger)len
 {
-    return [[[self alloc] initWithAlphabet:alphabet length:len] autorelease];
+    return [[self alloc] initWithAlphabet:alphabet length:len];
 }
 
 - (id)initWithDefaultAlphabet
@@ -52,21 +53,22 @@
     return [self initWithAlphabet:[NSString defaultAlphabet]];
 }
 
-- (id)initWithAlphabet:(NSString *)alphabet
+- (id)initWithAlphabet:(NSString*)alphabet
 {
     return [self initWithAlphabet:alphabet length:DEFAULT_LENGTH];
 }
 
-- (id)initWithAlphabet:(NSString *)alphabet length:(NSUInteger)len
+- (id)initWithAlphabet:(NSString*)alphabet
+                length:(NSUInteger)len
 {
-    [self release];
     NSMutableString *s = [NSMutableString stringWithCapacity:len];
-    for (NSUInteger i = 0U; i < len; i++) {
+    for (NSUInteger i = 0U; i < len; i++)
+    {
         u_int32_t r = arc4random() % [alphabet length];
-        unichar c = [alphabet characterAtIndex:r];
+        unichar   c = [alphabet characterAtIndex:r];
         [s appendFormat:@"%C", c];
     }
-    return [[NSString stringWithString:s] retain];
+    return [self initWithString:s];
 }
 
 @end
